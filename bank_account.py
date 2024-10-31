@@ -33,7 +33,10 @@ class AccountDB:
 
     def deposit(self, account_num, amount):
         index = self.__search_private(account_num)
-        self.account_database[index].deposit(account_num, amount)
+        if index == -1:
+            print(account_num, "No such account")
+        else:
+            self.account_database[index].deposit(account_num, amount)
 
 class Account:
     def __init__(self, num, type, account_name, balance):
@@ -68,11 +71,13 @@ my_account_DB.insert(account3)
 my_account_DB.insert(account4)
 my_account_DB.insert(account5)
 print(my_account_DB)
-my_account_DB.delete(account5)
+my_account_DB.delete("0000")
 print(my_account_DB)
-# my_account_DB.search_public("0003").deposit(50)
-# print(my_account_DB)
-# my_account_DB.search_public("0003").withdraw(100)
-# print(my_account_DB)
-# my_account_DB.search_public("0010").deposit(50)
-# print(my_account_DB)
+my_account_DB.search_public("0003").deposit(50)
+print(my_account_DB)
+my_account_DB.search_public("0003").withdraw(100)
+print(my_account_DB)
+my_account_DB.search_public("0001").deposit(50)
+print(my_account_DB)
+my_account_DB.search_public("0001").withdraw(100)
+print(my_account_DB)
