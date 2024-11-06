@@ -34,7 +34,7 @@ class AccountDB:
     def deposit(self, account_num, amount):
         index = self.__search_private(account_num)
         if index == -1:
-            print(account_num, "No such account")
+            print(account_num, "Invalid account number ")
         else:
             self.account_database[index].deposit(account_num, amount)
 
